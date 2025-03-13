@@ -1,3 +1,4 @@
+import 'package:week_3_blabla_project/EXERCISE-1/listeners/ride_preferences_listener.dart';
 
 import '../model/ride_pref/ride_pref.dart';
 import '../repository/ride_preferences_repository.dart';
@@ -38,9 +39,27 @@ class RidePrefService {
   ///
   static RidePrefService get instance {
     if (_instance == null) {
-		  throw Exception("RidePreferencesService is not initialized. Call initialize() first.");
-		}
-		return _instance!;
+      throw Exception(
+          "RidePreferencesService is not initialized. Call initialize() first.");
+    }
+    return _instance!;
+  }
+
+  // Listeners management
+  final List<RidePreferencesListener> _listeners = [];
+
+  // Method to add a listener
+  void addListener(RidePreferencesListener listener) {
+    _listeners.add(listener);
+  }
+
+  // Notify all listeners when preference changes
+  void _notifyListeners() {
+    if (_currentPreference != null) {
+      for (var listener in _listeners) {
+        listener.onRidePreferencesChanged(_currentPreference!);
+      }
+    }
   }
 
   // Current preference
@@ -52,6 +71,7 @@ class RidePrefService {
   void setCurrentPreference(RidePreference preference) {
     _currentPreference = preference;
     print('Set current pref to $_currentPreference');
+    _notifyListeners(); // Notify listeners
   }
 
   // Past preferences
