@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StatisticsScreen extends StatelessWidget {
-  final int redTapCount;
-  final int blueTapCount;
-
-  const StatisticsScreen({
-    super.key,
-    required this.redTapCount,
-    required this.blueTapCount,
-  });
+  
 
   @override
   Widget build(BuildContext context) {

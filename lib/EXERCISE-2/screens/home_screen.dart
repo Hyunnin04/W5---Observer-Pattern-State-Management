@@ -11,35 +11,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  int redTapCount = 0;
-  int blueTapCount = 0;
-
-  void _incrementRedTapCount() {
-    setState(() {
-      redTapCount++;
-    });
-  }
-
-  void _incrementBlueTapCount() {
-    setState(() {
-      blueTapCount++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _currentIndex == 0
-          ? ColorTapsScreen(
-              redTapCount: redTapCount,
-              blueTapCount: blueTapCount,
-              onRedTap: _incrementRedTapCount,
-              onBlueTap: _incrementBlueTapCount,
-            )
-          : StatisticsScreen(
-              redTapCount: redTapCount,
-              blueTapCount: blueTapCount,
-            ),
+      body: _currentIndex == 0 ? ColorTapsScreen() : StatisticsScreen(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {

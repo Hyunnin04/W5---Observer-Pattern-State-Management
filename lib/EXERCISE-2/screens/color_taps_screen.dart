@@ -2,19 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/card_type.dart';
 import '../widgets/color_tap.dart';
 
-class ColorTapsScreen extends StatelessWidget {
-  final int redTapCount;
-  final int blueTapCount;
-  final VoidCallback onRedTap;
-  final VoidCallback onBlueTap;
-
-  const ColorTapsScreen({
-    super.key,
-    required this.redTapCount,
-    required this.blueTapCount,
-    required this.onRedTap,
-    required this.onBlueTap,
-  });
+class ColorTapsScreen extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
